@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:8080/api", // ✅ MUST MATCH BACKEND PORT
+  baseURL: "https://taiga-production.up.railway.app", // ✅ MUST MATCH BACKEND PORT
   headers: {
     "Content-Type": "application/json",
   },
