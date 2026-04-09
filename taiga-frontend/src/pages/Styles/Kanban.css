@@ -1,0 +1,483 @@
+/* ==============================
+   PAGE LAYOUT (Glass + Depth)
+================================= */
+.kanban-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: linear-gradient(135deg, #def4ff, #f1f8ff);
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+  border-radius: 14px;
+  overflow: hidden;
+  perspective: 1200px;
+  margin: -20px;
+}
+
+/* ==============================
+   HEADER
+================================= */
+.kanban-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.kanban-header h1 {
+  font-size: 28px;
+  font-weight: 800;
+  background: linear-gradient(90deg, #2563eb, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ==============================
+   ADD BUTTON (Floating 3D)
+================================= */
+.add-btn {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+}
+
+.add-btn:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 16px 40px rgba(37, 99, 235, 0.4);
+}
+
+/* ==============================
+   BOARD
+================================= */
+.kanban-body {
+  flex: 1;
+  overflow: hidden;
+}
+
+.kanban-board {
+  display: flex;
+  gap: 28px;
+  height: 100%;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+/* ==============================
+   COLUMN (3D Floating Glass)
+================================= */
+.kanban-column {
+  display: flex;
+  flex-direction: column;
+  min-width: 320px;
+  height: 100%;
+  border-radius: 18px;
+  backdrop-filter: blur(18px);
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.08),
+    0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.35s ease;
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+
+.kanban-column:hover {
+  transform: rotateX(2deg) rotateY(-2deg) translateY(-4px);
+}
+
+/* Drag highlight */
+.kanban-column.drag-over {
+  background: rgba(219, 234, 254, 0.8);
+  transform: scale(1.02);
+}
+
+/* Column colored indicators */
+.kanban-column.NEW { border-top: 6px solid #3b82f6; }
+.kanban-column.READY { border-top: 6px solid #8b5cf6; }
+.kanban-column.IN_PROGRESS { border-top: 6px solid #f59e0b; }
+.kanban-column.READY_FOR_TEST { border-top: 6px solid #10b981; }
+.kanban-column.DONE { border-top: 6px solid #64748b; }
+
+/* ==============================
+   COLUMN HEADER
+================================= */
+.column-header {
+  padding: 16px;
+  font-weight: 700;
+  font-size: 14px;
+  background: rgba(249, 250, 251, 0.8);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* ==============================
+   COLUMN CONTENT
+================================= */
+.column-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+/* ==============================
+   CARD (Floating 3D)
+================================= */
+.kanban-card {
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.08),
+    0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  transform: translateZ(0);
+}
+
+.kanban-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.12),
+    0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.kanban-card.dragging {
+  transform: rotate(4deg) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* ==============================
+   CARD CONTENT
+================================= */
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.card-id {
+  font-weight: 600;
+  color: #475569;
+}
+
+.card-title {
+  margin-top: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  color: #1e293b;
+}
+
+/* ==============================
+   CARD MENU
+================================= */
+.menu {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.card-menu {
+  position: absolute;
+  top: 40px;
+  right: 12px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  z-index: 10;
+  animation: fadeIn 0.2s ease;
+}
+
+.card-menu div {
+  padding: 12px 18px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.card-menu div:hover {
+  background: #f3f4f6;
+}
+
+/* ==============================
+   MODAL (Modern Elevated)
+================================= */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background: white;
+  padding: 28px;
+  border-radius: 20px;
+  width: 380px;
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease;
+}
+
+.modal input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.modal-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* ==============================
+   COLLAPSE (Right → Left)
+================================= */
+.kanban-column {
+  width: 320px;
+  min-width: 320px;
+  transition: width 0.35s ease;
+}
+
+.kanban-column.collapsed {
+  width: 70px;
+  min-width: 70px;
+}
+
+.kanban-column.collapsed .column-content {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.kanban-column.collapsed .column-title {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+/* ==============================
+   ANIMATION
+================================= */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ==============================
+   RESPONSIVE
+================================= */
+@media (max-width: 1024px) {
+  .kanban-column {
+    min-width: 260px;
+  }
+}
+
+@media (max-width: 768px) {
+  .kanban-board {
+    gap: 16px;
+  }
+
+  .kanban-column {
+    min-width: 240px;
+  }
+
+  .kanban-header h1 {
+    font-size: 20px;
+  }
+}
+
+/* ===== RIPPLE EFFECT ===== */
+.add-btn,
+.modal-actions button,
+.card-menu div {
+  position: relative;
+  overflow: hidden;
+}
+
+.add-btn::after,
+.modal-actions button::after,
+.card-menu div::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 0.5s, opacity 0.8s;
+}
+
+.add-btn:active::after,
+.modal-actions button:active::after,
+.card-menu div:active::after {
+  width: 200%;
+  height: 200%;
+  transform: scale(1);
+  opacity: 1;
+  transition: 0s;
+}
+
+/* ===== AI GLOW BORDER ===== */
+.kanban-column::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  padding: 2px;
+  background: linear-gradient(90deg, #3b82f6, #7c3aed, #10b981);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.kanban-column:hover::before {
+  opacity: 0.5;
+}
+
+
+
+/* =====================================
+   MODERN NEW USER STORY MODAL ENHANCEMENT
+===================================== */
+
+.modern-modal {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(25px);
+  border-radius: 24px;
+  width: 420px;
+  padding: 32px;
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.4) inset;
+  animation: modalPop 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient Animated Title */
+.modal-title {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #2563eb, #7c3aed, #10b981);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 4s ease infinite;
+}
+
+/* Input Field Modern */
+.input-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+  background: #f8fafc;
+}
+
+.input-group input:focus {
+  border-color: #6366f1;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+}
+
+/* Buttons */
+.primary-btn {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: white;
+  padding: 10px 22px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.primary-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(37, 99, 235, 0.4);
+}
+
+.ghost-btn {
+  background: transparent;
+  border: 1px solid #cbd5e1;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ghost-btn:hover {
+  background: #f1f5f9;
+}
+
+/* Modal Entrance Animation */
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: scale(0.85) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Gradient Animation */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Subtle Glow Border */
+.modern-modal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 2px;
+  background: linear-gradient(90deg, #2563eb, #7c3aed, #10b981);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.4;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .modern-modal {
+    width: 95%;
+    padding: 24px;
+  }
+}

@@ -1,0 +1,25 @@
+/* LIGHT THEME */
+body.light {
+  --app-bg: #f8fafc;      /* Dashboard-like light background */
+  --text: #020617;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --hover: rgba(56, 189, 248, 0.1);
+}
+
+/* DARK THEME */
+body.dark {
+  --app-bg: #020617;      /* Dashboard background */
+  --text: #e5e7eb;
+  --card: #020617;
+  --border: #1e293b;
+  --hover: rgba(56, 189, 248, 0.15);
+}
+
+/* GLOBAL APPLY */
+body {
+  margin: 0;
+  background: var(--app-bg);
+  color: var(--text);
+  transition: background 0.35s ease, color 0.35s ease;
+}

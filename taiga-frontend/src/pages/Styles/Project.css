@@ -1,0 +1,243 @@
+/* ===== PAGE ===== */
+.projects-page.premium-ui {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: linear-gradient(135deg, #def4ff, #f1f8ff);
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+  border-radius: 14px;
+  overflow: hidden;
+  perspective: 1200px;
+  margin: -20px;
+}
+
+/* ===== HEADER ===== */
+.projects-header {
+  margin-bottom: 30px;
+  
+}
+
+.projects-header h1 {
+  font-size: 32px;
+  font-weight: 800;
+  background: linear-gradient(90deg,#2563eb,#7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: black;
+}
+
+/* ===== GLASS CARD BASE ===== */
+.glass-card {
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(18px);
+  border-radius: 20px;
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+.glass-card h3{
+  color: #2563eb;
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 25px 60px rgba(99,102,241,0.15);
+}
+
+/* ===== CREATE CARD ===== */
+.create-project-card {
+  padding: 30px;
+  max-width: 480px;
+  margin-bottom: 50px;
+}
+
+.create-project-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+/* ===== INPUT ===== */
+.input-groups {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.input-icon {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  color: #94a3b8;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 12px 14px 12px 42px;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  font-size: 14px;
+  outline: none;
+  background: #f8fafc;
+  transition: 0.3s ease;
+
+}
+
+.input-groups input,
+.input-group textarea {
+  width: 100%;
+  padding: 12px 14px 12px 42px;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  font-size: 14px;
+  outline: none;
+  background: #f8fafc;
+  transition: 0.3s ease;
+  
+}
+.input-group textarea {
+  height: 90px;
+  resize: none;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  border-color: #6366f1;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(99,102,241,0.15);
+}
+
+/* ===== BUTTONS ===== */
+.primary-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg,#2563eb,#7c3aed);
+  border: none;
+  border-radius: 14px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(37,99,235,0.4);
+}
+
+.ghost-btn {
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid #cbd5e1;
+  background: transparent;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.ghost-btn:hover {
+  background: #f1f5f9;
+}
+
+.btn-update {
+  display: flex;
+  gap: 10px;
+}
+
+/* ===== PROJECT GRID ===== */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(260px,1fr));
+  gap: 24px;
+}
+
+.projects-section h3{
+  color: #2563eb;
+  padding-bottom: 20px;
+}
+/* ===== PROJECT CARD ===== */
+.project-card {
+  padding: 26px;
+  text-align: center;
+}
+
+.project-card h4 {
+  margin: 10px 0 6px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.project-card p {
+  font-size: 14px;
+  color: #64748b;
+}
+
+.project-icon {
+  width: 50px;
+  height: 50px;
+  margin: auto;
+  border-radius: 50%;
+  background: linear-gradient(135deg,#e0e7ff,#c7d2fe);
+  color: #4f46e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.project-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 14px;
+  font-size: 20px;
+  color: #64748b;
+}
+
+.project-actions svg {
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.project-actions svg:hover {
+  color: #2563eb;
+  transform: scale(1.15);
+}
+
+/* ===== SKELETON ===== */
+.project-skeleton {
+  height: 160px;
+  border-radius: 20px;
+  background: linear-gradient(90deg,#f1f5f9,#e2e8f0,#f1f5f9);
+  animation: shimmer 1.4s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position:-200px 0; }
+  100% { background-position:200px 0; }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:768px){
+  .projects-page.premium-ui {
+    padding:20px;
+  }
+
+  .create-project-card {
+    max-width:100%;
+  }
+}

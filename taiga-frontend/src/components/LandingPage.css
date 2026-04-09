@@ -1,0 +1,173 @@
+.landing {
+  min-height: 100vh;
+  background: #f6f6f6;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ================= HEADER ================= */
+.landing-header {
+  background: #82cfc2;
+  padding: 20px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 600;
+  color: #2c2c2c;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-icon {
+  font-size: 18px;
+  color: #3b3b3b;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-btn {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.primary-btn {
+  background: #20c997;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+  color: white;
+}
+
+.primary-btn:hover {
+  background: #17b48a;
+}
+
+.primary-btn.large {
+  margin-top: 25px;
+  padding: 14px 30px;
+  font-size: 16px;
+}
+
+/* ================= HERO ================= */
+.hero {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 100px 6%;
+  gap: 60px;
+}
+
+.hero-left {
+  flex: 1;
+  max-width: 650px;
+}
+
+.hero-left h1 {
+  font-size: 52px;
+  font-weight: 700;
+  color: #1e7f6f;
+  line-height: 1.2;
+}
+
+.hero-left span {
+  font-style: italic;
+}
+
+.subtitle {
+  margin-top: 22px;
+  font-size: 18px;
+  color: #444;
+}
+
+.description {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+}
+
+.small-text {
+  margin-top: 18px;
+  font-size: 14px;
+  color: #888;
+}
+
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-right img {
+  width: 100%;
+  max-width: 650px;
+  border-radius: 14px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .hero {
+    padding: 80px 5%;
+    gap: 40px;
+  }
+
+  .hero-left h1 {
+    font-size: 40px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+  .landing-header {
+    padding: 15px 5%;
+  }
+
+  .nav-links {
+    gap: 12px;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 60px 5%;
+  }
+
+  .hero-left h1 {
+    font-size: 30px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  .hero-right {
+    margin-top: 40px;
+  }
+
+  .hero-right img {
+    max-width: 100%;
+  }
+}

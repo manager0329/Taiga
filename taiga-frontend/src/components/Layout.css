@@ -1,0 +1,54 @@
+/* =============================== */
+/* MAIN LAYOUT */
+/* =============================== */
+
+.layout {
+  display: flex;
+  height: 100vh;
+  background: #f8fafc;
+}
+
+/* =============================== */
+/* CONTENT AREA */
+/* =============================== */
+
+.layout-content {
+  flex: 1;
+  margin-left: 260px;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 40px;
+  transition: margin-left 0.35s ease;
+}
+
+/* When sidebar collapsed */
+.sidebar.collapsed ~ .layout-content {
+  margin-left: 80px;
+}
+
+/* Page animation wrapper */
+.page-wrapper {
+  min-height: 100%;
+}
+
+/* =============================== */
+/* RESPONSIVE */
+/* =============================== */
+
+@media (max-width: 1024px) {
+  .layout-content {
+    margin-left: 80px;
+    padding: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .layout-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+}
